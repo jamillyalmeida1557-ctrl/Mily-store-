@@ -5,275 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>꒰ 🛍️ ꒱ 𝐌𝐢𝐥𝐲 𝐒𝐭𝐨𝐫𝐞 𐙚</title>
     <style>
-        :root {
-            --pink-main: #ff69b4;
-            --pink-soft: #ffe6f2;
-            --pink-light: #fff0f5;
-            --text-color: #5a5a5a;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f9f9f9;
-            color: var(--text-color);
-            padding-bottom: 60px;
-        }
-
-        header {
-            background-color: #fff;
-            padding: 15px 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--pink-main);
-        }
-
-        .cart-btn-top {
-            background-color: var(--pink-soft);
-            color: var(--pink-main);
-            border: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 25px 15px;
-            max-width: 650px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            color: var(--pink-main);
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            font-size: 0.95rem;
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .btn-discord {
-            background-color: #5865F2;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .filters {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin: 15px 0 25px 0;
-            padding: 0 10px;
-        }
-
-        .filter-btn {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            padding: 8px 16px;
-            border-radius: 15px;
-            cursor: pointer;
-            color: #555;
-            font-size: 0.85rem;
-            font-weight: bold;
-            transition: all 0.2s;
-        }
-
-        .filter-btn.active {
-            background-color: var(--pink-soft);
-            color: var(--pink-main);
-            border-color: var(--pink-main);
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .product-card {
-            background: #fff;
-            border-radius: 15px;
-            padding: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            text-align: center;
-            border: 1px solid var(--pink-soft);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .product-card h3 {
-            font-size: 1rem;
-            margin-bottom: 8px;
-            color: #333;
-        }
-
-        .product-card .price {
-            color: var(--pink-main);
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 12px;
-        }
-
-        .add-cart-btn {
-            background-color: var(--pink-soft);
-            color: var(--pink-main);
-            border: 1px solid var(--pink-main);
-            width: 100%;
-            padding: 8px;
-            border-radius: 10px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 0.85rem;
-        }
-
-        .info-box {
-            background: #fff;
-            border: 2px solid var(--pink-soft);
-            border-radius: 15px;
-            padding: 20px;
-            max-width: 650px;
-            margin: 30px auto 20px auto;
-        }
-
-        .info-box h3 {
-            color: var(--pink-main);
-            margin-bottom: 10px;
-        }
-
-        .info-box ol {
-            padding-left: 20px;
-            color: #666;
-            line-height: 1.5;
-            font-size: 0.9rem;
-        }
-
-        footer {
-            text-align: center;
-            color: #aaa;
-            font-size: 0.8rem;
-            margin-top: 30px;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            padding: 15px;
-        }
-
-        .modal-content {
-            background: #fff;
-            padding: 20px;
-            border-radius: 15px;
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-            position: relative;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #aaa;
-        }
-
-        .pix-box {
-            background: var(--pink-light);
-            padding: 10px;
-            border-radius: 8px;
-            margin: 10px 0;
-            font-size: 0.8rem;
-            word-break: break-all;
-            color: var(--pink-main);
-            font-weight: bold;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            margin: 5px 0 10px 0;
-            outline: none;
-            font-size: 0.85rem;
-        }
-
-        .input-label {
-            text-align: left;
-            font-size: 0.75rem;
-            color: #666;
-            font-weight: bold;
-            display: block;
-        }
-
-        .remove-btn {
-            background: none;
-            border: none;
-            color: red;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .coupon-box {
-            display: flex;
-            gap: 5px;
-            margin: 10px 0;
-        }
-
-        .coupon-input {
-            flex: 1;
-            padding: 6px 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-        }
+        :root { --pink-main: #ff69b4; --pink-soft: #ffe6f2; --pink-light: #fff0f5; --text-color: #5a5a5a; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f9f9f9; color: var(--text-color); padding-bottom: 60px; }
+        header { background: #fff; padding: 15px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; }
+        .logo { font-size: 1.2rem; font-weight: bold; color: var(--pink-main); }
+        .cart-btn-top { background: var(--pink-soft); color: var(--pink-main); border: none; padding: 8px 16px; border-radius: 20px; font-weight: bold; cursor: pointer; }
+        .hero { text-align: center; padding: 25px 15px; max-width: 650px; margin: 0 auto; }
+        .hero h1 { color: var(--pink-main); font-size: 1.8rem; margin-bottom: 10px; }
+        .btn-discord { background: #5865F2; color: white; border: none; padding: 10px 20px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; text-decoration: none; display: inline-block; }
+        .filters { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 15px 0 25px 0; padding: 0 10px; }
+        .filter-btn { background: #fff; border: 1px solid #ddd; padding: 8px 16px; border-radius: 15px; cursor: pointer; color: #555; font-size: 0.85rem; font-weight: bold; }
+        .filter-btn.active { background: var(--pink-soft); color: var(--pink-main); border-color: var(--pink-main); }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; max-width: 900px; margin: 0 auto; padding: 0 15px; }
+        .product-card { background: #fff; border-radius: 15px; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); text-align: center; border: 1px solid var(--pink-soft); display: flex; flex-direction: column; justify-content: space-between; }
+        .product-card h3 { font-size: 0.95rem; margin-bottom: 8px; color: #333; }
+        .product-card .price { color: var(--pink-main); font-size: 1.1rem; font-weight: bold; margin-bottom: 10px; }
+        .add-cart-btn { background: var(--pink-soft); color: var(--pink-main); border: 1px solid var(--pink-main); width: 100%; padding: 8px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 0.85rem; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 2000; padding: 15px; }
+        .modal-content { background: #fff; padding: 20px; border-radius: 15px; width: 100%; max-width: 400px; text-align: center; position: relative; max-height: 90vh; overflow-y: auto; }
+        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 1.5rem; cursor: pointer; color: #aaa; }
+        .pix-box { background: var(--pink-light); padding: 10px; border-radius: 8px; margin: 10px 0; font-size: 0.8rem; word-break: break-all; color: var(--pink-main); font-weight: bold; }
+        .input-field { width: 100%; padding: 8px 12px; border: 1px solid #ddd; border-radius: 8px; margin: 5px 0 10px 0; font-size: 0.85rem; }
+        .input-label { text-align: left; font-size: 0.75rem; color: #666; font-weight: bold; display: block; }
+        .remove-btn { background: none; border: none; color: red; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
-
     <header>
         <div class="logo">꒰ 🛍️ ꒱ 𝐌𝐢𝐥𝐲 𝐒𝐭𝐨𝐫𝐞 𐙚</div>
         <button class="cart-btn-top" onclick="openModal('cart-modal')">🛒 Carrinho (<span id="cart-count">0</span>)</button>
@@ -281,11 +39,10 @@
 
     <div class="hero">
         <h1>꒰ 🛍️ ꒱ 𝐌𝐢𝐥𝐲 𝐒𝐭𝐨𝐫𝐞 𐙚</h1>
-        <p>Sua loja de itens, moedas e serviços para o Bloxburg! Entregas rápidas e atendimento direto pelo Discord.</p>
-        <a href="https://discord.gg/md2StDvbD" target="_blank" class="btn-discord">💬 Entrar no Servidor do Discord</a>
+        <p>Sua loja de itens e serviços do Bloxburg!</p>
+        <a href="https://discord.gg/md2StDvbD" target="_blank" class="btn-discord">💬 Servidor do Discord</a>
     </div>
 
-    <!-- BOTÕES DE CATEGORIA -->
     <div class="filters">
         <button class="filter-btn active" onclick="filterCategory('all', this)">Todas</button>
         <button class="filter-btn" onclick="filterCategory('bucks', this)">💰 Bucks</button>
@@ -294,200 +51,102 @@
         <button class="filter-btn" onclick="filterCategory('farm', this)">🌾 Farm</button>
     </div>
 
-    <!-- CONTAINER DOS PRODUTOS -->
     <div class="products-grid" id="products-container"></div>
 
-    <div class="info-box">
-        <h3>📦 Como funciona a entrega?</h3>
-        <ol>
-            <li>Escolha os itens desejados e adicione ao carrinho.</li>
-            <li>Realize o pagamento via PIX no valor final do carrinho.</li>
-            <li>Informe o Nome da sua conta de banco e seu Nick do Roblox.</li>
-            <li><b>Atenção:</b> Bucks e Blockbux chegam na sua conta em até <b>3 a 5 dias úteis</b>!</li>
-            <li>Se comprou <b>Farm</b>, entre no nosso servidor do Discord e abra um Ticket para agendar o horário.</li>
-        </ol>
-    </div>
-
-    <footer>
-        Mily Store &copy; 2026 - Todos os direitos reservados
-    </footer>
-
-    <!-- MODAL CARRINHO -->
     <div class="modal" id="cart-modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('cart-modal')">&times;</span>
             <h3 style="color: var(--pink-main); margin-bottom: 15px;">Seu Carrinho</h3>
             <div id="cart-items"></div>
-
-            <div id="coupon-wrapper" style="display:none;">
-                <div class="coupon-box">
-                    <input type="text" id="coupon-code" class="coupon-input" placeholder="Cupom de desconto">
-                    <button class="add-cart-btn" style="width:auto; padding:6px 12px;" onclick="applyCoupon()">Aplicar</button>
-                </div>
-                <div id="coupon-message" style="font-size:0.8rem; text-align:left; margin-bottom:10px;"></div>
-            </div>
-
             <h4 id="cart-total" style="margin: 15px 0;">Total: R$ 0,00</h4>
-            <button class="add-cart-btn" style="background-color: var(--pink-main); color:#fff;" onclick="proceedToPayment()" id="pay-btn">Pagar Carrinho</button>
+            <button class="add-cart-btn" style="background: var(--pink-main); color:#fff;" onclick="proceedToPayment()" id="pay-btn">Pagar Carrinho</button>
         </div>
     </div>
 
-    <!-- MODAL PAGAMENTO -->
     <div class="modal" id="payment-modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('payment-modal')">&times;</span>
-            <h3 style="color: var(--pink-main);">Pagamento via PIX</h3>
-            <p style="font-size: 0.85rem; color: #666; margin-top: 6px;">Copie a chave PIX abaixo:</p>
+            <h3 style="color: var(--pink-main);">Pagamento PIX</h3>
             <div class="pix-box">eb235430-9121-4fc3-99b6-737008edbb4a</div>
             <button class="add-cart-btn" style="margin-bottom: 12px;" onclick="copyPix()">Copiar Chave PIX</button>
-            
-            <hr style="border: 0; border-top: 1px solid #eee; margin: 10px 0;">
-            
-            <p style="font-size: 0.85rem; color: #ff69b4; font-weight: bold;">Dados da Verificação do PIX</p>
-            
-            <label class="input-label">Nome do Titular da Conta PIX:</label>
-            <input type="text" id="pix-name" class="input-field" placeholder="Ex: Maria Silva Santos">
-            
-            <label class="input-label">Banco Utilizado:</label>
-            <input type="text" id="pix-bank" class="input-field" placeholder="Ex: Nubank, Inter, Itaú...">
-
-            <p style="font-size: 0.75rem; color: #777; margin: 10px 0;">Prazo de entrega: 3 a 5 dias úteis.<br>Farm: abra Ticket no Discord para agendar.</p>
-            <button class="add-cart-btn" style="background-color: #2e8b57; color:#fff;" onclick="openNickModal()">Já fiz o pagamento!</button>
+            <label class="input-label">Nome do Titular do PIX:</label>
+            <input type="text" id="pix-name" class="input-field" placeholder="Ex: Maria Silva">
+            <label class="input-label">Banco:</label>
+            <input type="text" id="pix-bank" class="input-field" placeholder="Ex: Nubank">
+            <button class="add-cart-btn" style="background: #2e8b57; color:#fff;" onclick="openNickModal()">Já paguei!</button>
         </div>
     </div>
 
-    <!-- MODAL NICK ROBLOX -->
     <div class="modal" id="nick-modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('nick-modal')">&times;</span>
             <h3 style="color: var(--pink-main);">Nick do Roblox</h3>
-            <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Digite seu Nick para entregarmos o produto:</p>
             <input type="text" id="roblox-nick" class="input-field" placeholder="Seu Nick no Roblox...">
-            <button class="add-cart-btn" id="confirm-order-btn" style="background-color: var(--pink-main); color:#fff; margin-top: 10px;" onclick="finishOrder()">Confirmar Pedido</button>
+            <button class="add-cart-btn" id="confirm-order-btn" style="background: var(--pink-main); color:#fff;" onclick="finishOrder()">Confirmar Pedido</button>
         </div>
     </div>
 
-    <!-- MODAL SUCESSO -->
     <div class="modal" id="success-modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('success-modal')">&times;</span>
             <h3 style="color: #2e8b57;">Pedido Concluído! 🎉</h3>
-            <p style="font-size: 0.9rem; color: #666; margin: 15px 0;">Obrigado por comprar na Mily Store! Entregaremos seu pedido em breve.</p>
+            <p style="margin: 15px 0; font-size: 0.9rem;">Obrigado! Entregaremos seu pedido em breve.</p>
             <a href="https://discord.gg/md2StDvbD" target="_blank" class="btn-discord">Ir para o Discord</a>
         </div>
     </div>
-
-    <script>
+        <script>
         var DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1541376145369468948/N45R5rQcPsxddzdKc3dzVcaSJzd0fRCZlHCvWalTBGfypVngjKc5pTfpfpOF3amH9GkM";
 
-        // LISTA DE PRODUTOS
         var products = [
-            // Bucks
             { id: 1, name: "10.000 Bucks", price: 0.50, category: "bucks" },
-            { id: 2, name: "20.000 Bucks", price: 1.00, category: "bucks" },
-            { id: 3, name: "30.000 Bucks", price: 1.50, category: "bucks" },
-            { id: 4, name: "40.000 Bucks", price: 2.00, category: "bucks" },
-            { id: 5, name: "50.000 Bucks", price: 2.50, category: "bucks" },
-            { id: 6, name: "100.000 Bucks", price: 5.00, category: "bucks" },
-            { id: 7, name: "200.000 Bucks", price: 7.00, category: "bucks" },
-            { id: 8, name: "300.000 Bucks", price: 10.00, category: "bucks" },
-            { id: 9, name: "500.000 Bucks", price: 20.00, category: "bucks" },
-
-            // Blockbux
-            { id: 10, name: "100 Blockbux", price: 4.00, category: "blockbux" },
-            { id: 11, name: "200 Blockbux", price: 6.00, category: "blockbux" },
-            { id: 12, name: "500 Blockbux", price: 7.50, category: "blockbux" },
-            { id: 13, name: "1.000 Blockbux", price: 14.00, category: "blockbux" },
-
-            // Gamepasses
-            { id: 14, name: "Excellent Employee", price: 7.50, category: "passes" },
-            { id: 15, name: "Premium", price: 15.00, category: "passes" },
-            { id: 16, name: "Multiple Floors", price: 9.50, category: "passes" },
-            { id: 17, name: "Advanced Placing", price: 7.50, category: "passes" },
-            { id: 18, name: "Large Plot", price: 8.00, category: "passes" },
-            { id: 19, name: "Basements", price: 4.00, category: "passes" },
-            { id: 20, name: "Marvelous Mood", price: 7.00, category: "passes" },
-            { id: 21, name: "Transform Plus", price: 21.00, category: "passes" },
-
-            // Farm
-            { id: 22, name: "Farm 100k", price: 7.00, category: "farm" },
-            { id: 23, name: "Farm 500k", price: 12.50, category: "farm" },
-            { id: 24, name: "Farm 1M", price: 24.50, category: "farm" },
-            { id: 25, name: "Farm 2M", price: 35.50, category: "farm" },
-            { id: 26, name: "Farm 3M", price: 50.00, category: "farm" },
-            { id: 27, name: "Farm 4M", price: 70.00, category: "farm" },
-            { id: 28, name: "Farm 5M", price: 90.00, category: "farm" }
+            { id: 2, name: "50.000 Bucks", price: 2.50, category: "bucks" },
+            { id: 3, name: "100.000 Bucks", price: 5.00, category: "bucks" },
+            { id: 4, name: "100 Blockbux", price: 4.00, category: "blockbux" },
+            { id: 5, name: "500 Blockbux", price: 7.50, category: "blockbux" },
+            { id: 6, name: "Excellent Employee", price: 7.50, category: "passes" },
+            { id: 7, name: "Premium", price: 15.00, category: "passes" },
+            { id: 8, name: "Farm 100k", price: 7.00, category: "farm" },
+            { id: 9, name: "Farm 500k", price: 12.50, category: "farm" }
         ];
 
-        var coupons = {
-            "MILY10": { type: "percent", value: 10 },
-            "MILY15": { type: "percent", value: 15 },
-            "MILY20": { type: "percent", value: 20 },
-            "MILY25": { type: "percent", value: 25 },
-            "MILY50": { type: "percent", value: 50 },
-            "PROMO2": { type: "fixed", value: 2.00 },
-            "PROMO5": { type: "fixed", value: 5.00 },
-            "PROMO10": { type: "fixed", value: 10.00 },
-            "BLOOFARM": { type: "percent", value: 30 },
-            "CLIENTEVIP": { type: "percent", value: 40 }
-        };
-
         var cart = [];
-        var activeDiscount = 0;
-        var appliedCouponCode = "";
 
-        // RENDERIZA PRODUTOS NA TELA
-        function renderProducts(category) {
+        function renderProducts(cat) {
             var container = document.getElementById('products-container');
             container.innerHTML = '';
-
             for (var i = 0; i < products.length; i++) {
                 var p = products[i];
-                if (category === 'all' || p.category === category) {
-                    var card = document.createElement('div');
-                    card.className = 'product-card';
-                    card.innerHTML = 
-                        '<h3>' + p.name + '</h3>' +
-                        '<div class="price">R$ ' + p.price.toFixed(2).replace('.', ',') + '</div>' +
-                        '<button class="add-cart-btn" onclick="addToCart(' + p.id + ')">Adicionar 💕</button>';
-                    container.appendChild(card);
+                if (cat === 'all' || p.category === cat) {
+                    container.innerHTML += 
+                        '<div class="product-card">' +
+                            '<h3>' + p.name + '</h3>' +
+                            '<div class="price">R$ ' + p.price.toFixed(2).replace('.', ',') + '</div>' +
+                            '<button class="add-cart-btn" onclick="addToCart(' + p.id + ')">Adicionar 💕</button>' +
+                        '</div>';
                 }
             }
         }
 
-        // FILTRO DE CATEGORIAS
         function filterCategory(cat, btn) {
             var btns = document.querySelectorAll('.filter-btn');
-            for (var i = 0; i < btns.length; i++) {
-                btns[i].classList.remove('active');
-            }
+            for (var i = 0; i < btns.length; i++) btns[i].classList.remove('active');
             if (btn) btn.classList.add('active');
             renderProducts(cat);
         }
 
-        // ADICIONAR AO CARRINHO
-        function addToCart(productId) {
-            var prod = null;
+        function addToCart(id) {
             for (var i = 0; i < products.length; i++) {
-                if (products[i].id === productId) {
-                    prod = products[i];
+                if (products[i].id === id) {
+                    cart.push(products[i]);
+                    document.getElementById('cart-count').innerText = cart.length;
+                    alert(products[i].name + " adicionado!");
                     break;
                 }
             }
-            if (prod) {
-                cart.push(prod);
-                document.getElementById('cart-count').innerText = cart.length;
-                alert(prod.name + " adicionado ao carrinho!");
-            }
         }
 
-        // REMOVER DO CARRINHO
         function removeFromCart(index) {
             cart.splice(index, 1);
-            if (cart.length === 0) {
-                activeDiscount = 0;
-                appliedCouponCode = "";
-            }
             document.getElementById('cart-count').innerText = cart.length;
             updateCartUI();
         }
@@ -501,36 +160,86 @@
             document.getElementById(id).style.display = 'none';
         }
 
-        // ATUALIZA INTERFACE DO CARRINHO
         function updateCartUI() {
             var container = document.getElementById('cart-items');
             var totalEl = document.getElementById('cart-total');
             var payBtn = document.getElementById('pay-btn');
-            var couponWrapper = document.getElementById('coupon-wrapper');
             container.innerHTML = '';
 
             if (cart.length === 0) {
-                container.innerHTML = '<p style="color:#888; margin:10px 0;">Seu carrinho está vazio.</p>';
+                container.innerHTML = '<p style="color:#888;">Carrinho vazio.</p>';
                 totalEl.innerText = 'Total: R$ 0,00';
                 payBtn.style.display = 'none';
-                couponWrapper.style.display = 'none';
             } else {
-                var subtotal = 0;
+                var total = 0;
                 for (var i = 0; i < cart.length; i++) {
-                    var item = cart[i];
-                    subtotal += item.price;
+                    total += cart[i].price;
                     container.innerHTML += 
-                        '<div style="display:flex; justify-content:space-between; align-items:center; margin:8px 0; font-size:0.85rem; background:#fff0f5; padding:8px 10px; border-radius:8px;">' +
-                            '<span>' + item.name + ' - <b>R$ ' + item.price.toFixed(2).replace('.', ',') + '</b></span>' +
+                        '<div style="display:flex; justify-content:space-between; margin:8px 0; padding:8px; background:#ffe6f2; border-radius:8px;">' +
+                            '<span>' + cart[i].name + ' - R$ ' + cart[i].price.toFixed(2).replace('.', ',') + '</span>' +
                             '<button class="remove-btn" onclick="removeFromCart(' + i + ')">✕</button>' +
                         '</div>';
                 }
+                totalEl.innerText = 'Total: R$ ' + total.toFixed(2).replace('.', ',');
+                payBtn.style.display = 'block';
+            }
+        }
 
-                couponWrapper.style.display = 'block';
+        function proceedToPayment() { closeModal('cart-modal'); openModal('payment-modal'); }
+        function copyPix() { navigator.clipboard.writeText('eb235430-9121-4fc3-99b6-737008edbb4a'); alert('Chave PIX copiada!'); }
 
-                var finalTotal = subtotal;
-                if (activeDiscount > 0) {
-                    finalTotal = Math.max(0, subtotal - activeDiscount);
-                    totalEl.innerHTML = '<span style="text-decoration:line-through; color:#aaa; font-size:0.85rem;">R$ ' + subtotal.toFixed(2).replace('.', ',') + '</span> <br> Total: <span style="color:var(--pink-main);">R$ ' + finalTotal.toFixed(2).replace('.', ',') + '</span>';
-                } else {
-                    totalEl.innerText = 'Total: R$ ' +
+        function openNickModal() {
+            if (!document.getElementById('pix-name').value || !document.getElementById('pix-bank').value) {
+                alert('Preencha os dados do PIX!');
+                return;
+            }
+            closeModal('payment-modal');
+            openModal('nick-modal');
+        }
+
+        function finishOrder() {
+            var nick = document.getElementById('roblox-nick').value.trim();
+            if (!nick) return alert('Digite seu Nick!');
+
+            var btn = document.getElementById('confirm-order-btn');
+            btn.disabled = true;
+
+            var total = 0, itemsText = "";
+            for (var i = 0; i < cart.length; i++) {
+                total += cart[i].price;
+                itemsText += "• " + cart[i].name + "\n";
+            }
+
+            var payload = {
+                username: "Mily Store",
+                embeds: [{
+                    title: "🛍️ NOVO PEDIDO!",
+                    color: 16738740,
+                    fields: [
+                        { name: "Nick Roblox", value: nick, inline: true },
+                        { name: "Banco", value: document.getElementById('pix-bank').value, inline: true },
+                        { name: "Titular PIX", value: document.getElementById('pix-name').value, inline: false },
+                        { name: "Itens", value: itemsText, inline: false },
+                        { name: "Total", value: "R$ " + total.toFixed(2).replace('.', ','), inline: true }
+                    ]
+                }]
+            };
+
+            fetch(DISCORD_WEBHOOK_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            }).then(function() {
+                cart = [];
+                document.getElementById('cart-count').innerText = 0;
+                closeModal('nick-modal');
+                openModal('success-modal');
+            }).catch(function() {
+                alert("Erro ao enviar pedido.");
+            }).finally(function() { btn.disabled = false; });
+        }
+
+        window.onload = function() { renderProducts('all'); };
+    </script>
+</body>
+</html>
