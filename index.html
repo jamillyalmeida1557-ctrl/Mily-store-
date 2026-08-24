@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mily Store</title>
+    <title>꒰ 🛍️ ꒱ 𝐌𝐢𝐥𝐲 𝐒𝐭𝐨𝐫𝐞 𐙚</title>
     <style>
         :root {
             --pink-main: #ff69b4;
@@ -95,12 +95,13 @@
         .filter-btn {
             background-color: #fff;
             border: 1px solid #ddd;
-            padding: 6px 14px;
+            padding: 8px 16px;
             border-radius: 15px;
             cursor: pointer;
             color: #555;
             font-size: 0.85rem;
             font-weight: bold;
+            transition: all 0.2s;
         }
 
         .filter-btn.active {
@@ -274,16 +275,17 @@
 <body>
 
     <header>
-        <div class="logo">🛍️ Mily Store</div>
+        <div class="logo">꒰ 🛍️ ꒱ 𝐌𝐢𝐥𝐲 𝐒𝐭𝐨𝐫𝐞 𐙚</div>
         <button class="cart-btn-top" onclick="openModal('cart-modal')">🛒 Carrinho (<span id="cart-count">0</span>)</button>
     </header>
 
     <div class="hero">
-        <h1>🛍️ Mily Store</h1>
+        <h1>꒰ 🛍️ ꒱ 𝐌𝐢𝐥𝐲 𝐒𝐭𝐨𝐫𝐞 𐙚</h1>
         <p>Sua loja de itens, moedas e serviços para o Bloxburg! Entregas rápidas e atendimento direto pelo Discord.</p>
         <a href="https://discord.gg/md2StDvbD" target="_blank" class="btn-discord">💬 Entrar no Servidor do Discord</a>
     </div>
 
+    <!-- BOTÕES DE CATEGORIA -->
     <div class="filters">
         <button class="filter-btn active" onclick="filterCategory('all', this)">Todas</button>
         <button class="filter-btn" onclick="filterCategory('bucks', this)">💰 Bucks</button>
@@ -292,44 +294,8 @@
         <button class="filter-btn" onclick="filterCategory('farm', this)">🌾 Farm</button>
     </div>
 
-    <!-- PRODUTOS PRÉ-CARREGADOS NO HTML -->
-    <div class="products-grid" id="products-container">
-        <!-- BUCKS -->
-        <div class="product-card" data-category="bucks"><h3>10.000 Bucks</h3><div class="price">R$ 0,50</div><button class="add-cart-btn" onclick="addToCart('10.000 Bucks', 0.50)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="bucks"><h3>20.000 Bucks</h3><div class="price">R$ 1,00</div><button class="add-cart-btn" onclick="addToCart('20.000 Bucks', 1.00)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="bucks"><h3>30.000 Bucks</h3><div class="price">R$ 1,50</div><button class="add-cart-btn" onclick="addToCart('30.000 Bucks', 1.50)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="bucks"><h3>40.000 Bucks</h3><div class="price">R$ 2,00</div><button class="add-cart-btn" onclick="addToCart('40.000 Bucks', 2.00)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="bucks"><h3>50.000 Bucks</h3><div class="price">R$ 2,50</div><button class="add-cart-btn" onclick="addToCart('50.000 Bucks', 2.50)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="bucks"><h3>100.000 Bucks</h3><div class="price">R$ 5,00</div><button class="add-cart-btn" onclick="addToCart('100.000 Bucks', 5.00)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="bucks"><h3>200.000 Bucks</h3><div class="price">R$ 7,00</div><button class="add-cart-btn" onclick="addToCart('200.000 Bucks', 7.00)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="bucks"><h3>300.000 Bucks</h3><div class="price">R$ 10,00</div><button class="add-cart-btn" onclick="addToCart('300.000 Bucks', 10.00)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="bucks"><h3>500.000 Bucks</h3><div class="price">R$ 20,00</div><button class="add-cart-btn" onclick="addToCart('500.000 Bucks', 20.00)">Adicionar 💕</button></div>
-
-        <!-- BLOCKBUX -->
-        <div class="product-card" data-category="blockbux"><h3>100 Blockbux</h3><div class="price">R$ 4,00</div><button class="add-cart-btn" onclick="addToCart('100 Blockbux', 4.00)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="blockbux"><h3>200 Blockbux</h3><div class="price">R$ 6,00</div><button class="add-cart-btn" onclick="addToCart('200 Blockbux', 6.00)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="blockbux"><h3>500 Blockbux</h3><div class="price">R$ 7,50</div><button class="add-cart-btn" onclick="addToCart('500 Blockbux', 7.50)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="blockbux"><h3>1.000 Blockbux</h3><div class="price">R$ 14,00</div><button class="add-cart-btn" onclick="addToCart('1.000 Blockbux', 14.00)">Adicionar 💕</button></div>
-
-        <!-- PASSES -->
-        <div class="product-card" data-category="passes"><h3>Excellent Employee</h3><div class="price">R$ 7,50</div><button class="add-cart-btn" onclick="addToCart('Excellent Employee', 7.50)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="passes"><h3>Premium</h3><div class="price">R$ 15,00</div><button class="add-cart-btn" onclick="addToCart('Premium', 15.00)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="passes"><h3>Multiple Floors</h3><div class="price">R$ 9,50</div><button class="add-cart-btn" onclick="addToCart('Multiple Floors', 9.50)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="passes"><h3>Advanced Placing</h3><div class="price">R$ 7,50</div><button class="add-cart-btn" onclick="addToCart('Advanced Placing', 7.50)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="passes"><h3>Large Plot</h3><div class="price">R$ 8,00</div><button class="add-cart-btn" onclick="addToCart('Large Plot', 8.00)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="passes"><h3>Basements</h3><div class="price">R$ 4,00</div><button class="add-cart-btn" onclick="addToCart('Basements', 4.00)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="passes"><h3>Marvelous Mood</h3><div class="price">R$ 7,00</div><button class="add-cart-btn" onclick="addToCart('Marvelous Mood', 7.00)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="passes"><h3>Transform Plus</h3><div class="price">R$ 21,00</div><button class="add-cart-btn" onclick="addToCart('Transform Plus', 21.00)">Adicionar 💕</button></div>
-
-        <!-- FARM -->
-        <div class="product-card" data-category="farm"><h3>Farm 100k</h3><div class="price">R$ 7,00</div><button class="add-cart-btn" onclick="addToCart('Farm 100k', 7.00)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="farm"><h3>Farm 500k</h3><div class="price">R$ 12,50</div><button class="add-cart-btn" onclick="addToCart('Farm 500k', 12.50)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="farm"><h3>Farm 1M</h3><div class="price">R$ 24,50</div><button class="add-cart-btn" onclick="addToCart('Farm 1M', 24.50)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="farm"><h3>Farm 2M</h3><div class="price">R$ 35,50</div><button class="add-cart-btn" onclick="addToCart('Farm 2M', 35.50)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="farm"><h3>Farm 3M</h3><div class="price">R$ 50,00</div><button class="add-cart-btn" onclick="addToCart('Farm 3M', 50.00)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="farm"><h3>Farm 4M</h3><div class="price">R$ 70,00</div><button class="add-cart-btn" onclick="addToCart('Farm 4M', 70.00)">Adicionar 💕</button></div>
-        <div class="product-card" data-category="farm"><h3>Farm 5M</h3><div class="price">R$ 90,00</div><button class="add-cart-btn" onclick="addToCart('Farm 5M', 90.00)">Adicionar 💕</button></div>
-    </div>
+    <!-- CONTAINER DOS PRODUTOS -->
+    <div class="products-grid" id="products-container"></div>
 
     <div class="info-box">
         <h3>📦 Como funciona a entrega?</h3>
@@ -346,7 +312,7 @@
         Mily Store &copy; 2026 - Todos os direitos reservados
     </footer>
 
-    <!-- Modals -->
+    <!-- MODAL CARRINHO -->
     <div class="modal" id="cart-modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('cart-modal')">&times;</span>
@@ -366,6 +332,7 @@
         </div>
     </div>
 
+    <!-- MODAL PAGAMENTO -->
     <div class="modal" id="payment-modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('payment-modal')">&times;</span>
@@ -389,6 +356,7 @@
         </div>
     </div>
 
+    <!-- MODAL NICK ROBLOX -->
     <div class="modal" id="nick-modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('nick-modal')">&times;</span>
@@ -399,6 +367,7 @@
         </div>
     </div>
 
+    <!-- MODAL SUCESSO -->
     <div class="modal" id="success-modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('success-modal')">&times;</span>
@@ -410,6 +379,45 @@
 
     <script>
         var DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1541376145369468948/N45R5rQcPsxddzdKc3dzVcaSJzd0fRCZlHCvWalTBGfypVngjKc5pTfpfpOF3amH9GkM";
+
+        // LISTA DE PRODUTOS
+        var products = [
+            // Bucks
+            { id: 1, name: "10.000 Bucks", price: 0.50, category: "bucks" },
+            { id: 2, name: "20.000 Bucks", price: 1.00, category: "bucks" },
+            { id: 3, name: "30.000 Bucks", price: 1.50, category: "bucks" },
+            { id: 4, name: "40.000 Bucks", price: 2.00, category: "bucks" },
+            { id: 5, name: "50.000 Bucks", price: 2.50, category: "bucks" },
+            { id: 6, name: "100.000 Bucks", price: 5.00, category: "bucks" },
+            { id: 7, name: "200.000 Bucks", price: 7.00, category: "bucks" },
+            { id: 8, name: "300.000 Bucks", price: 10.00, category: "bucks" },
+            { id: 9, name: "500.000 Bucks", price: 20.00, category: "bucks" },
+
+            // Blockbux
+            { id: 10, name: "100 Blockbux", price: 4.00, category: "blockbux" },
+            { id: 11, name: "200 Blockbux", price: 6.00, category: "blockbux" },
+            { id: 12, name: "500 Blockbux", price: 7.50, category: "blockbux" },
+            { id: 13, name: "1.000 Blockbux", price: 14.00, category: "blockbux" },
+
+            // Gamepasses
+            { id: 14, name: "Excellent Employee", price: 7.50, category: "passes" },
+            { id: 15, name: "Premium", price: 15.00, category: "passes" },
+            { id: 16, name: "Multiple Floors", price: 9.50, category: "passes" },
+            { id: 17, name: "Advanced Placing", price: 7.50, category: "passes" },
+            { id: 18, name: "Large Plot", price: 8.00, category: "passes" },
+            { id: 19, name: "Basements", price: 4.00, category: "passes" },
+            { id: 20, name: "Marvelous Mood", price: 7.00, category: "passes" },
+            { id: 21, name: "Transform Plus", price: 21.00, category: "passes" },
+
+            // Farm
+            { id: 22, name: "Farm 100k", price: 7.00, category: "farm" },
+            { id: 23, name: "Farm 500k", price: 12.50, category: "farm" },
+            { id: 24, name: "Farm 1M", price: 24.50, category: "farm" },
+            { id: 25, name: "Farm 2M", price: 35.50, category: "farm" },
+            { id: 26, name: "Farm 3M", price: 50.00, category: "farm" },
+            { id: 27, name: "Farm 4M", price: 70.00, category: "farm" },
+            { id: 28, name: "Farm 5M", price: 90.00, category: "farm" }
+        ];
 
         var coupons = {
             "MILY10": { type: "percent", value: 10 },
@@ -428,29 +436,101 @@
         var activeDiscount = 0;
         var appliedCouponCode = "";
 
-        function filterCategory(cat, btn) {
-            var btns = document.querySelectorAll('.filter-btn');
-            for(var i = 0; i < btns.length; i++) {
-                btns[i].classList.remove('active');
-            }
-            if(btn) btn.classList.add('active');
+        // RENDERIZA PRODUTOS NA TELA
+        function renderProducts(category) {
+            var container = document.getElementById('products-container');
+            container.innerHTML = '';
 
-            var cards = document.querySelectorAll('.product-card');
-            for(var j = 0; j < cards.length; j++) {
-                var c = cards[j];
-                if(cat === 'all' || c.getAttribute('data-category') === cat) {
-                    c.style.display = 'flex';
-                } else {
-                    c.style.display = 'none';
+            for (var i = 0; i < products.length; i++) {
+                var p = products[i];
+                if (category === 'all' || p.category === category) {
+                    var card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.innerHTML = 
+                        '<h3>' + p.name + '</h3>' +
+                        '<div class="price">R$ ' + p.price.toFixed(2).replace('.', ',') + '</div>' +
+                        '<button class="add-cart-btn" onclick="addToCart(' + p.id + ')">Adicionar 💕</button>';
+                    container.appendChild(card);
                 }
             }
         }
 
-        function addToCart(name, price) {
-            cart.push({ name: name, price: price });
-            document.getElementById('cart-count').innerText = cart.length;
-            alert(name + " adicionado ao carrinho!");
+        // FILTRO DE CATEGORIAS
+        function filterCategory(cat, btn) {
+            var btns = document.querySelectorAll('.filter-btn');
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].classList.remove('active');
+            }
+            if (btn) btn.classList.add('active');
+            renderProducts(cat);
         }
 
+        // ADICIONAR AO CARRINHO
+        function addToCart(productId) {
+            var prod = null;
+            for (var i = 0; i < products.length; i++) {
+                if (products[i].id === productId) {
+                    prod = products[i];
+                    break;
+                }
+            }
+            if (prod) {
+                cart.push(prod);
+                document.getElementById('cart-count').innerText = cart.length;
+                alert(prod.name + " adicionado ao carrinho!");
+            }
+        }
+
+        // REMOVER DO CARRINHO
         function removeFromCart(index) {
-            cart.splic
+            cart.splice(index, 1);
+            if (cart.length === 0) {
+                activeDiscount = 0;
+                appliedCouponCode = "";
+            }
+            document.getElementById('cart-count').innerText = cart.length;
+            updateCartUI();
+        }
+
+        function openModal(id) {
+            if (id === 'cart-modal') updateCartUI();
+            document.getElementById(id).style.display = 'flex';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        // ATUALIZA INTERFACE DO CARRINHO
+        function updateCartUI() {
+            var container = document.getElementById('cart-items');
+            var totalEl = document.getElementById('cart-total');
+            var payBtn = document.getElementById('pay-btn');
+            var couponWrapper = document.getElementById('coupon-wrapper');
+            container.innerHTML = '';
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p style="color:#888; margin:10px 0;">Seu carrinho está vazio.</p>';
+                totalEl.innerText = 'Total: R$ 0,00';
+                payBtn.style.display = 'none';
+                couponWrapper.style.display = 'none';
+            } else {
+                var subtotal = 0;
+                for (var i = 0; i < cart.length; i++) {
+                    var item = cart[i];
+                    subtotal += item.price;
+                    container.innerHTML += 
+                        '<div style="display:flex; justify-content:space-between; align-items:center; margin:8px 0; font-size:0.85rem; background:#fff0f5; padding:8px 10px; border-radius:8px;">' +
+                            '<span>' + item.name + ' - <b>R$ ' + item.price.toFixed(2).replace('.', ',') + '</b></span>' +
+                            '<button class="remove-btn" onclick="removeFromCart(' + i + ')">✕</button>' +
+                        '</div>';
+                }
+
+                couponWrapper.style.display = 'block';
+
+                var finalTotal = subtotal;
+                if (activeDiscount > 0) {
+                    finalTotal = Math.max(0, subtotal - activeDiscount);
+                    totalEl.innerHTML = '<span style="text-decoration:line-through; color:#aaa; font-size:0.85rem;">R$ ' + subtotal.toFixed(2).replace('.', ',') + '</span> <br> Total: <span style="color:var(--pink-main);">R$ ' + finalTotal.toFixed(2).replace('.', ',') + '</span>';
+                } else {
+                    totalEl.innerText = 'Total: R$ ' +
