@@ -16,7 +16,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
@@ -27,23 +27,19 @@
 
         header {
             background-color: #fff;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
         .logo {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: bold;
             color: var(--pink-main);
-            display: flex;
-            align-items: center;
-            gap: 5px;
         }
 
         .cart-btn-top {
@@ -58,8 +54,8 @@
 
         .hero {
             text-align: center;
-            padding: 30px 20px;
-            max-width: 600px;
+            padding: 25px 15px;
+            max-width: 650px;
             margin: 0 auto;
         }
 
@@ -71,19 +67,18 @@
 
         .hero p {
             font-size: 0.95rem;
-            color: #777;
-            margin-bottom: 20px;
+            color: #666;
+            margin-bottom: 15px;
         }
 
         .btn-discord {
             background-color: #5865F2;
             color: white;
             border: none;
-            padding: 12px 24px;
-            border-radius: 25px;
+            padding: 10px 20px;
+            border-radius: 20px;
             font-weight: bold;
-            font-size: 0.95rem;
-            cursor: pointer;
+            font-size: 0.9rem;
             text-decoration: none;
             display: inline-block;
         }
@@ -91,99 +86,100 @@
         .filters {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
-            margin: 20px 0;
+            margin: 15px 0 25px 0;
             padding: 0 10px;
         }
 
         .filter-btn {
             background-color: #fff;
-            border: 1px solid #eee;
-            padding: 8px 18px;
-            border-radius: 20px;
+            border: 1px solid #ddd;
+            padding: 6px 14px;
+            border-radius: 15px;
             cursor: pointer;
-            color: #666;
-            font-weight: 500;
+            color: #555;
+            font-size: 0.85rem;
+            font-weight: bold;
         }
 
         .filter-btn.active {
             background-color: var(--pink-soft);
             color: var(--pink-main);
-            border-color: var(--pink-soft);
-            font-weight: bold;
+            border-color: var(--pink-main);
         }
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            max-width: 800px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
 
         .product-card {
             background: #fff;
-            border-radius: 20px;
-            padding: 20px 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
             text-align: center;
             border: 1px solid var(--pink-soft);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .product-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: #444;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: #333;
         }
 
         .product-card .price {
             color: var(--pink-main);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: bold;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .add-cart-btn {
-            background-color: var(--pink-light);
+            background-color: var(--pink-soft);
             color: var(--pink-main);
-            border: none;
+            border: 1px solid var(--pink-main);
             width: 100%;
-            padding: 10px;
-            border-radius: 12px;
+            padding: 8px;
+            border-radius: 10px;
             font-weight: bold;
             cursor: pointer;
+            font-size: 0.85rem;
         }
 
         .info-box {
             background: #fff;
             border: 2px solid var(--pink-soft);
-            border-radius: 20px;
-            padding: 25px;
-            max-width: 600px;
-            margin: 40px auto 20px auto;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 650px;
+            margin: 30px auto 20px auto;
         }
 
         .info-box h3 {
             color: var(--pink-main);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            margin-bottom: 10px;
         }
 
         .info-box ol {
             padding-left: 20px;
             color: #666;
-            line-height: 1.6;
-            font-size: 0.95rem;
+            line-height: 1.5;
+            font-size: 0.9rem;
         }
 
         footer {
             text-align: center;
             color: #aaa;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             margin-top: 30px;
         }
 
@@ -194,19 +190,19 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.5);
             justify-content: center;
             align-items: center;
             z-index: 2000;
-            padding: 20px;
+            padding: 15px;
         }
 
         .modal-content {
             background: #fff;
-            padding: 25px;
-            border-radius: 20px;
+            padding: 20px;
+            border-radius: 15px;
             width: 100%;
-            max-width: 420px;
+            max-width: 400px;
             text-align: center;
             position: relative;
             max-height: 90vh;
@@ -215,9 +211,9 @@
 
         .close-btn {
             position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 1.4rem;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
             cursor: pointer;
             color: #aaa;
         }
@@ -225,9 +221,9 @@
         .pix-box {
             background: var(--pink-light);
             padding: 10px;
-            border-radius: 10px;
+            border-radius: 8px;
             margin: 10px 0;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             word-break: break-all;
             color: var(--pink-main);
             font-weight: bold;
@@ -235,63 +231,43 @@
 
         .input-field {
             width: 100%;
-            padding: 10px 14px;
+            padding: 8px 12px;
             border: 1px solid #ddd;
-            border-radius: 10px;
-            margin: 6px 0;
+            border-radius: 8px;
+            margin: 5px 0 10px 0;
             outline: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .input-label {
             text-align: left;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #666;
             font-weight: bold;
-            margin-top: 8px;
             display: block;
         }
 
-        .remove-item-btn {
+        .remove-btn {
             background: none;
             border: none;
-            color: #ff4d4d;
-            font-size: 1.1rem;
-            cursor: pointer;
-            padding: 0 5px;
+            color: red;
             font-weight: bold;
+            cursor: pointer;
         }
 
         .coupon-box {
             display: flex;
-            gap: 8px;
-            margin: 15px 0 5px 0;
+            gap: 5px;
+            margin: 10px 0;
         }
 
         .coupon-input {
             flex: 1;
-            padding: 8px 12px;
+            padding: 6px 10px;
             border: 1px solid #ddd;
-            border-radius: 10px;
-            outline: none;
+            border-radius: 8px;
             text-transform: uppercase;
-            font-size: 0.85rem;
-        }
-
-        .coupon-btn {
-            background-color: var(--pink-soft);
-            color: var(--pink-main);
-            border: none;
-            padding: 8px 14px;
-            border-radius: 10px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .coupon-msg {
             font-size: 0.8rem;
-            margin-bottom: 10px;
-            text-align: left;
         }
     </style>
 </head>
@@ -316,7 +292,44 @@
         <button class="filter-btn" onclick="filterCategory('farm', this)">🌾 Farm</button>
     </div>
 
-    <div class="products-grid" id="products-container"></div>
+    <!-- PRODUTOS PRÉ-CARREGADOS NO HTML -->
+    <div class="products-grid" id="products-container">
+        <!-- BUCKS -->
+        <div class="product-card" data-category="bucks"><h3>10.000 Bucks</h3><div class="price">R$ 0,50</div><button class="add-cart-btn" onclick="addToCart('10.000 Bucks', 0.50)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="bucks"><h3>20.000 Bucks</h3><div class="price">R$ 1,00</div><button class="add-cart-btn" onclick="addToCart('20.000 Bucks', 1.00)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="bucks"><h3>30.000 Bucks</h3><div class="price">R$ 1,50</div><button class="add-cart-btn" onclick="addToCart('30.000 Bucks', 1.50)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="bucks"><h3>40.000 Bucks</h3><div class="price">R$ 2,00</div><button class="add-cart-btn" onclick="addToCart('40.000 Bucks', 2.00)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="bucks"><h3>50.000 Bucks</h3><div class="price">R$ 2,50</div><button class="add-cart-btn" onclick="addToCart('50.000 Bucks', 2.50)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="bucks"><h3>100.000 Bucks</h3><div class="price">R$ 5,00</div><button class="add-cart-btn" onclick="addToCart('100.000 Bucks', 5.00)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="bucks"><h3>200.000 Bucks</h3><div class="price">R$ 7,00</div><button class="add-cart-btn" onclick="addToCart('200.000 Bucks', 7.00)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="bucks"><h3>300.000 Bucks</h3><div class="price">R$ 10,00</div><button class="add-cart-btn" onclick="addToCart('300.000 Bucks', 10.00)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="bucks"><h3>500.000 Bucks</h3><div class="price">R$ 20,00</div><button class="add-cart-btn" onclick="addToCart('500.000 Bucks', 20.00)">Adicionar 💕</button></div>
+
+        <!-- BLOCKBUX -->
+        <div class="product-card" data-category="blockbux"><h3>100 Blockbux</h3><div class="price">R$ 4,00</div><button class="add-cart-btn" onclick="addToCart('100 Blockbux', 4.00)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="blockbux"><h3>200 Blockbux</h3><div class="price">R$ 6,00</div><button class="add-cart-btn" onclick="addToCart('200 Blockbux', 6.00)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="blockbux"><h3>500 Blockbux</h3><div class="price">R$ 7,50</div><button class="add-cart-btn" onclick="addToCart('500 Blockbux', 7.50)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="blockbux"><h3>1.000 Blockbux</h3><div class="price">R$ 14,00</div><button class="add-cart-btn" onclick="addToCart('1.000 Blockbux', 14.00)">Adicionar 💕</button></div>
+
+        <!-- PASSES -->
+        <div class="product-card" data-category="passes"><h3>Excellent Employee</h3><div class="price">R$ 7,50</div><button class="add-cart-btn" onclick="addToCart('Excellent Employee', 7.50)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="passes"><h3>Premium</h3><div class="price">R$ 15,00</div><button class="add-cart-btn" onclick="addToCart('Premium', 15.00)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="passes"><h3>Multiple Floors</h3><div class="price">R$ 9,50</div><button class="add-cart-btn" onclick="addToCart('Multiple Floors', 9.50)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="passes"><h3>Advanced Placing</h3><div class="price">R$ 7,50</div><button class="add-cart-btn" onclick="addToCart('Advanced Placing', 7.50)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="passes"><h3>Large Plot</h3><div class="price">R$ 8,00</div><button class="add-cart-btn" onclick="addToCart('Large Plot', 8.00)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="passes"><h3>Basements</h3><div class="price">R$ 4,00</div><button class="add-cart-btn" onclick="addToCart('Basements', 4.00)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="passes"><h3>Marvelous Mood</h3><div class="price">R$ 7,00</div><button class="add-cart-btn" onclick="addToCart('Marvelous Mood', 7.00)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="passes"><h3>Transform Plus</h3><div class="price">R$ 21,00</div><button class="add-cart-btn" onclick="addToCart('Transform Plus', 21.00)">Adicionar 💕</button></div>
+
+        <!-- FARM -->
+        <div class="product-card" data-category="farm"><h3>Farm 100k</h3><div class="price">R$ 7,00</div><button class="add-cart-btn" onclick="addToCart('Farm 100k', 7.00)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="farm"><h3>Farm 500k</h3><div class="price">R$ 12,50</div><button class="add-cart-btn" onclick="addToCart('Farm 500k', 12.50)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="farm"><h3>Farm 1M</h3><div class="price">R$ 24,50</div><button class="add-cart-btn" onclick="addToCart('Farm 1M', 24.50)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="farm"><h3>Farm 2M</h3><div class="price">R$ 35,50</div><button class="add-cart-btn" onclick="addToCart('Farm 2M', 35.50)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="farm"><h3>Farm 3M</h3><div class="price">R$ 50,00</div><button class="add-cart-btn" onclick="addToCart('Farm 3M', 50.00)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="farm"><h3>Farm 4M</h3><div class="price">R$ 70,00</div><button class="add-cart-btn" onclick="addToCart('Farm 4M', 70.00)">Adicionar 💕</button></div>
+        <div class="product-card" data-category="farm"><h3>Farm 5M</h3><div class="price">R$ 90,00</div><button class="add-cart-btn" onclick="addToCart('Farm 5M', 90.00)">Adicionar 💕</button></div>
+    </div>
 
     <div class="info-box">
         <h3>📦 Como funciona a entrega?</h3>
@@ -343,9 +356,9 @@
             <div id="coupon-wrapper" style="display:none;">
                 <div class="coupon-box">
                     <input type="text" id="coupon-code" class="coupon-input" placeholder="Cupom de desconto">
-                    <button class="coupon-btn" onclick="applyCoupon()">Aplicar</button>
+                    <button class="add-cart-btn" style="width:auto; padding:6px 12px;" onclick="applyCoupon()">Aplicar</button>
                 </div>
-                <div id="coupon-message" class="coupon-msg"></div>
+                <div id="coupon-message" style="font-size:0.8rem; text-align:left; margin-bottom:10px;"></div>
             </div>
 
             <h4 id="cart-total" style="margin: 15px 0;">Total: R$ 0,00</h4>
@@ -398,44 +411,6 @@
     <script>
         var DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1541376145369468948/N45R5rQcPsxddzdKc3dzVcaSJzd0fRCZlHCvWalTBGfypVngjKc5pTfpfpOF3amH9GkM";
 
-        var products = [
-            // Bucks
-            { id: 1, name: "10.000 Bucks", price: 0.50, category: "bucks" },
-            { id: 2, name: "20.000 Bucks", price: 1.00, category: "bucks" },
-            { id: 3, name: "30.000 Bucks", price: 1.50, category: "bucks" },
-            { id: 4, name: "40.000 Bucks", price: 2.00, category: "bucks" },
-            { id: 5, name: "50.000 Bucks", price: 2.50, category: "bucks" },
-            { id: 6, name: "100.000 Bucks", price: 5.00, category: "bucks" },
-            { id: 7, name: "200.000 Bucks", price: 7.00, category: "bucks" },
-            { id: 8, name: "300.000 Bucks", price: 10.00, category: "bucks" },
-            { id: 9, name: "500.000 Bucks", price: 20.00, category: "bucks" },
-
-            // Blockbux
-            { id: 10, name: "100 Blockbux", price: 4.00, category: "blockbux" },
-            { id: 11, name: "200 Blockbux", price: 6.00, category: "blockbux" },
-            { id: 12, name: "500 Blockbux", price: 7.50, category: "blockbux" },
-            { id: 13, name: "1.000 Blockbux", price: 14.00, category: "blockbux" },
-
-            // Gamepasses
-            { id: 14, name: "Excellent Employee", price: 7.50, category: "passes" },
-            { id: 15, name: "Premium", price: 15.00, category: "passes" },
-            { id: 16, name: "Multiple Floors", price: 9.50, category: "passes" },
-            { id: 17, name: "Advanced Placing", price: 7.50, category: "passes" },
-            { id: 18, name: "Large Plot", price: 8.00, category: "passes" },
-            { id: 19, name: "Basements", price: 4.00, category: "passes" },
-            { id: 20, name: "Marvelous Mood", price: 7.00, category: "passes" },
-            { id: 21, name: "Transform Plus", price: 21.00, category: "passes" },
-
-            // Farm
-            { id: 22, name: "Farm 100k", price: 7.00, category: "farm" },
-            { id: 23, name: "Farm 500k", price: 12.50, category: "farm" },
-            { id: 24, name: "Farm 1M", price: 24.50, category: "farm" },
-            { id: 25, name: "Farm 2M", price: 35.50, category: "farm" },
-            { id: 26, name: "Farm 3M", price: 50.00, category: "farm" },
-            { id: 27, name: "Farm 4M", price: 70.00, category: "farm" },
-            { id: 28, name: "Farm 5M", price: 90.00, category: "farm" }
-        ];
-
         var coupons = {
             "MILY10": { type: "percent", value: 10 },
             "MILY15": { type: "percent", value: 15 },
@@ -453,93 +428,29 @@
         var activeDiscount = 0;
         var appliedCouponCode = "";
 
-        function renderProducts(filter) {
-            if(!filter) filter = 'all';
-            var container = document.getElementById('products-container');
-            if(!container) return;
-            container.innerHTML = '';
-
-            for(var i = 0; i < products.length; i++) {
-                var p = products[i];
-                if(filter === 'all' || p.category === filter) {
-                    var card = document.createElement('div');
-                    card.className = 'product-card';
-                    card.innerHTML = '<h3>' + p.name + '</h3>' +
-                                     '<div class="price">R$ ' + p.price.toFixed(2).replace('.', ',') + '</div>' +
-                                     '<button class="add-cart-btn" onclick="addToCart(' + p.id + ')">Adicionar ao Carrinho 💕</button>';
-                    container.appendChild(card);
-                }
-            }
-        }
-
         function filterCategory(cat, btn) {
             var btns = document.querySelectorAll('.filter-btn');
             for(var i = 0; i < btns.length; i++) {
                 btns[i].classList.remove('active');
             }
             if(btn) btn.classList.add('active');
-            renderProducts(cat);
+
+            var cards = document.querySelectorAll('.product-card');
+            for(var j = 0; j < cards.length; j++) {
+                var c = cards[j];
+                if(cat === 'all' || c.getAttribute('data-category') === cat) {
+                    c.style.display = 'flex';
+                } else {
+                    c.style.display = 'none';
+                }
+            }
         }
 
-        function addToCart(id) {
-            var item = null;
-            for(var i = 0; i < products.length; i++) {
-                if(products[i].id === id) { item = products[i]; break; }
-            }
-            if(item) {
-                cart.push(item);
-                document.getElementById('cart-count').innerText = cart.length;
-                alert(item.name + " adicionado ao carrinho!");
-            }
+        function addToCart(name, price) {
+            cart.push({ name: name, price: price });
+            document.getElementById('cart-count').innerText = cart.length;
+            alert(name + " adicionado ao carrinho!");
         }
 
         function removeFromCart(index) {
-            cart.splice(index, 1);
-            if(cart.length === 0) {
-                activeDiscount = 0;
-                appliedCouponCode = "";
-            }
-            document.getElementById('cart-count').innerText = cart.length;
-            updateCartUI();
-        }
-
-        function openModal(id) {
-            if(id === 'cart-modal') updateCartUI();
-            document.getElementById(id).style.display = 'flex';
-        }
-
-        function closeModal(id) {
-            document.getElementById(id).style.display = 'none';
-        }
-
-        function updateCartUI() {
-            var container = document.getElementById('cart-items');
-            var totalEl = document.getElementById('cart-total');
-            var payBtn = document.getElementById('pay-btn');
-            var couponWrapper = document.getElementById('coupon-wrapper');
-            container.innerHTML = '';
-
-            if(cart.length === 0) {
-                container.innerHTML = '<p style="color:#888; margin:10px 0;">Seu carrinho está vazio.</p>';
-                totalEl.innerText = 'Total: R$ 0,00';
-                payBtn.style.display = 'none';
-                couponWrapper.style.display = 'none';
-            } else {
-                var subtotal = 0;
-                for(var i = 0; i < cart.length; i++) {
-                    var item = cart[i];
-                    subtotal += item.price;
-                    container.innerHTML += '<div style="display:flex; justify-content:space-between; align-items:center; margin:10px 0; font-size:0.9rem; background:#fff0f5; padding:8px 12px; border-radius:10px;">' +
-                        '<span>' + item.name + ' - <b>R$ ' + item.price.toFixed(2).replace('.', ',') + '</b></span>' +
-                        '<button class="remove-item-btn" onclick="removeFromCart(' + i + ')" title="Remover item">❌</button>' +
-                    '</div>';
-                }
-
-                couponWrapper.style.display = 'block';
-
-                var finalTotal = subtotal;
-                if(activeDiscount > 0) {
-                    finalTotal = Math.max(0, subtotal - activeDiscount);
-                    totalEl.innerHTML = '<span style="text-decoration:line-through; color:#aaa; font-size:0.9rem;">R$ ' + subtotal.toFixed(2).replace('.', ',') + '</span> <br> Total: <span style="color:var(--pink-main);">R$ ' + finalTotal.toFixed(2).replace('.', ',') + '</span>';
-                } else {
-                    totalEl.inne
+            cart.splic
