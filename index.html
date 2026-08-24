@@ -251,6 +251,48 @@
             margin-top: 8px;
             display: block;
         }
+
+        .remove-item-btn {
+            background: none;
+            border: none;
+            color: #ff4d4d;
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 0 5px;
+            font-weight: bold;
+        }
+
+        .coupon-box {
+            display: flex;
+            gap: 8px;
+            margin: 15px 0 5px 0;
+        }
+
+        .coupon-input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            outline: none;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .coupon-btn {
+            background-color: var(--pink-soft);
+            color: var(--pink-main);
+            border: none;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .coupon-msg {
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -297,6 +339,15 @@
             <span class="close-btn" onclick="closeModal('cart-modal')">&times;</span>
             <h3 style="color: var(--pink-main); margin-bottom: 15px;">Seu Carrinho</h3>
             <div id="cart-items"></div>
+
+            <div id="coupon-wrapper" style="display:none;">
+                <div class="coupon-box">
+                    <input type="text" id="coupon-code" class="coupon-input" placeholder="Cupom de desconto">
+                    <button class="coupon-btn" onclick="applyCoupon()">Aplicar</button>
+                </div>
+                <div id="coupon-message" class="coupon-msg"></div>
+            </div>
+
             <h4 id="cart-total" style="margin: 15px 0;">Total: R$ 0,00</h4>
             <button class="add-cart-btn" style="background-color: var(--pink-main); color:#fff;" onclick="proceedToPayment()" id="pay-btn">Pagar Carrinho</button>
         </div>
@@ -331,7 +382,7 @@
             <h3 style="color: var(--pink-main);">Nick do Roblox</h3>
             <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Digite seu Nick para entregarmos o produto:</p>
             <input type="text" id="roblox-nick" class="input-field" placeholder="Seu Nick no Roblox...">
-            <button class="add-cart-btn" style="background-color: var(--pink-main); color:#fff; margin-top: 10px;" onclick="finishOrder()">Confirmar Pedido</button>
+            <button class="add-cart-btn" id="confirm-order-btn" style="background-color: var(--pink-main); color:#fff; margin-top: 10px;" onclick="finishOrder()">Confirmar Pedido</button>
         </div>
     </div>
 
@@ -345,6 +396,8 @@
     </div>
 
     <script>
+        const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1541376145369468948/N45R5rQcPsxddzdKc3dzVcaSJzd0fRCZlHCvWalTBGfypVngjKc5pTfpfpOF3amH9GkM";
+
         const products = [
             // Bucks
             { id: 1, name: "10.000 Bucks", price: 0.50, category: "bucks" },
@@ -383,7 +436,22 @@
             { id: 28, name: "Farm 5M", price: 90.00, category: "farm" }
         ];
 
+        const coupons = {
+            "MILY10": { type: "percent", value: 10 },
+            "MILY15": { type: "percent", value: 15 },
+            "MILY20": { type: "percent", value: 20 },
+            "MILY25": { type: "percent", value: 25 },
+            "MILY50": { type: "percent", value: 50 },
+            "PROMO2": { type: "fixed", value: 2.00 },
+            "PROMO5": { type: "fixed", value: 5.00 },
+            "PROMO10": { type: "fixed", value: 10.00 },
+            "BLOOFARM": { type: "percent", value: 30 },
+            "CLIENTEVIP": { type: "percent", value: 40 }
+        };
+
         let cart = [];
+        let activeDiscount = 0;
+        let appliedCouponCode = "";
 
         function renderProducts(filter = 'all') {
             const container = document.getElementById('products-container');
@@ -419,6 +487,16 @@
             }
         }
 
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            if(cart.length === 0) {
+                activeDiscount = 0;
+                appliedCouponCode = "";
+            }
+            document.getElementById('cart-count').innerText = cart.length;
+            updateCartUI();
+        }
+
         function openModal(id) {
             if(id === 'cart-modal') updateCartUI();
             document.getElementById(id).style.display = 'flex';
@@ -432,65 +510,38 @@
             const container = document.getElementById('cart-items');
             const totalEl = document.getElementById('cart-total');
             const payBtn = document.getElementById('pay-btn');
+            const couponWrapper = document.getElementById('coupon-wrapper');
             container.innerHTML = '';
 
             if(cart.length === 0) {
                 container.innerHTML = '<p style="color:#888; margin:10px 0;">Seu carrinho está vazio.</p>';
                 totalEl.innerText = 'Total: R$ 0,00';
                 payBtn.style.display = 'none';
+                couponWrapper.style.display = 'none';
             } else {
-                let total = 0;
-                cart.forEach((item) => {
-                    total += item.price;
-                    container.innerHTML += `<div style="display:flex; justify-content:space-between; margin:8px 0; font-size:0.9rem;">
-                        <span>${item.name}</span>
-                        <span>R$ ${item.price.toFixed(2).replace('.', ',')}</span>
+                let subtotal = 0;
+                cart.forEach((item, index) => {
+                    subtotal += item.price;
+                    container.innerHTML += `<div style="display:flex; justify-content:space-between; align-items:center; margin:10px 0; font-size:0.9rem; background:#fff0f5; padding:8px 12px; border-radius:10px;">
+                        <span>${item.name} - <b>R$ ${item.price.toFixed(2).replace('.', ',')}</b></span>
+                        <button class="remove-item-btn" onclick="removeFromCart(${index})" title="Remover item">❌</button>
                     </div>`;
                 });
-                totalEl.innerText = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
+
+                couponWrapper.style.display = 'block';
+
+                let finalTotal = subtotal;
+                if(activeDiscount > 0) {
+                    finalTotal = Math.max(0, subtotal - activeDiscount);
+                    totalEl.innerHTML = `<span style="text-decoration:line-through; color:#aaa; font-size:0.9rem;">R$ ${subtotal.toFixed(2).replace('.', ',')}</span> <br> Total: <span style="color:var(--pink-main);">R$ ${finalTotal.toFixed(2).replace('.', ',')}</span>`;
+                } else {
+                    totalEl.innerText = `Total: R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+                }
+
                 payBtn.style.display = 'block';
             }
         }
 
-        function proceedToPayment() {
-            closeModal('cart-modal');
-            openModal('payment-modal');
-        }
-
-        function copyPix() {
-            navigator.clipboard.writeText('eb235430-9121-4fc3-99b6-737008edbb4a');
-            alert('Chave PIX copiada!');
-        }
-
-        function openNickModal() {
-            const pixName = document.getElementById('pix-name').value;
-            const pixBank = document.getElementById('pix-bank').value;
-
-            if(!pixName || !pixBank) {
-                alert('Por favor, preencha o Nome do Titular e o Banco de onde você fez o PIX!');
-                return;
-            }
-
-            closeModal('payment-modal');
-            openModal('nick-modal');
-        }
-
-        function finishOrder() {
-            const nick = document.getElementById('roblox-nick').value;
-            if(!nick) {
-                alert('Por favor digite seu Nick do Roblox!');
-                return;
-            }
-            cart = [];
-            document.getElementById('cart-count').innerText = 0;
-            closeModal('nick-modal');
-            openModal('success-modal');
-        }
-
-        window.onload = function() {
-            renderProducts('all');
-        };
-    </script>
-</body>
-          </html>
-          
+        function applyCoupon() {
+            const input = document.getElementById('coupon-code');
+            cons
