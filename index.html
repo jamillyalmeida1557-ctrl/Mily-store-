@@ -396,9 +396,9 @@
     </div>
 
     <script>
-        const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1541376145369468948/N45R5rQcPsxddzdKc3dzVcaSJzd0fRCZlHCvWalTBGfypVngjKc5pTfpfpOF3amH9GkM";
+        var DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1541376145369468948/N45R5rQcPsxddzdKc3dzVcaSJzd0fRCZlHCvWalTBGfypVngjKc5pTfpfpOF3amH9GkM";
 
-        const products = [
+        var products = [
             // Bucks
             { id: 1, name: "10.000 Bucks", price: 0.50, category: "bucks" },
             { id: 2, name: "20.000 Bucks", price: 1.00, category: "bucks" },
@@ -436,7 +436,7 @@
             { id: 28, name: "Farm 5M", price: 90.00, category: "farm" }
         ];
 
-        const coupons = {
+        var coupons = {
             "MILY10": { type: "percent", value: 10 },
             "MILY15": { type: "percent", value: 15 },
             "MILY20": { type: "percent", value: 20 },
@@ -449,39 +449,43 @@
             "CLIENTEVIP": { type: "percent", value: 40 }
         };
 
-        let cart = [];
-        let activeDiscount = 0;
-        let appliedCouponCode = "";
+        var cart = [];
+        var activeDiscount = 0;
+        var appliedCouponCode = "";
 
         function renderProducts(filter) {
             if(!filter) filter = 'all';
-            const container = document.getElementById('products-container');
+            var container = document.getElementById('products-container');
             if(!container) return;
             container.innerHTML = '';
 
-            const filtered = filter === 'all' ? products : products.filter(function(p) { return p.category === filter; });
-
-            filtered.forEach(function(p) {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.innerHTML = `
-                    <h3>${p.name}</h3>
-                    <div class="price">R$ ${p.price.toFixed(2).replace('.', ',')}</div>
-                    <button class="add-cart-btn" onclick="addToCart(${p.id})">Adicionar ao Carrinho 💕</button>
-                `;
-                container.appendChild(card);
-            });
+            for(var i = 0; i < products.length; i++) {
+                var p = products[i];
+                if(filter === 'all' || p.category === filter) {
+                    var card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.innerHTML = '<h3>' + p.name + '</h3>' +
+                                     '<div class="price">R$ ' + p.price.toFixed(2).replace('.', ',') + '</div>' +
+                                     '<button class="add-cart-btn" onclick="addToCart(' + p.id + ')">Adicionar ao Carrinho 💕</button>';
+                    container.appendChild(card);
+                }
+            }
         }
 
         function filterCategory(cat, btn) {
-            const btns = document.querySelectorAll('.filter-btn');
-            btns.forEach(function(b) { b.classList.remove('active'); });
+            var btns = document.querySelectorAll('.filter-btn');
+            for(var i = 0; i < btns.length; i++) {
+                btns[i].classList.remove('active');
+            }
             if(btn) btn.classList.add('active');
             renderProducts(cat);
         }
 
         function addToCart(id) {
-            const item = products.find(function(p) { return p.id === id; });
+            var item = null;
+            for(var i = 0; i < products.length; i++) {
+                if(products[i].id === id) { item = products[i]; break; }
+            }
             if(item) {
                 cart.push(item);
                 document.getElementById('cart-count').innerText = cart.length;
@@ -509,10 +513,10 @@
         }
 
         function updateCartUI() {
-            const container = document.getElementById('cart-items');
-            const totalEl = document.getElementById('cart-total');
-            const payBtn = document.getElementById('pay-btn');
-            const couponWrapper = document.getElementById('coupon-wrapper');
+            var container = document.getElementById('cart-items');
+            var totalEl = document.getElementById('cart-total');
+            var payBtn = document.getElementById('pay-btn');
+            var couponWrapper = document.getElementById('coupon-wrapper');
             container.innerHTML = '';
 
             if(cart.length === 0) {
@@ -521,28 +525,21 @@
                 payBtn.style.display = 'none';
                 couponWrapper.style.display = 'none';
             } else {
-                let subtotal = 0;
-                cart.forEach(function(item, index) {
+                var subtotal = 0;
+                for(var i = 0; i < cart.length; i++) {
+                    var item = cart[i];
                     subtotal += item.price;
-                    container.innerHTML += `<div style="display:flex; justify-content:space-between; align-items:center; margin:10px 0; font-size:0.9rem; background:#fff0f5; padding:8px 12px; border-radius:10px;">
-                        <span>${item.name} - <b>R$ ${item.price.toFixed(2).replace('.', ',')}</b></span>
-                        <button class="remove-item-btn" onclick="removeFromCart(${index})" title="Remover item">❌</button>
-                    </div>`;
-                });
+                    container.innerHTML += '<div style="display:flex; justify-content:space-between; align-items:center; margin:10px 0; font-size:0.9rem; background:#fff0f5; padding:8px 12px; border-radius:10px;">' +
+                        '<span>' + item.name + ' - <b>R$ ' + item.price.toFixed(2).replace('.', ',') + '</b></span>' +
+                        '<button class="remove-item-btn" onclick="removeFromCart(' + i + ')" title="Remover item">❌</button>' +
+                    '</div>';
+                }
 
                 couponWrapper.style.display = 'block';
 
-                let finalTotal = subtotal;
+                var finalTotal = subtotal;
                 if(activeDiscount > 0) {
                     finalTotal = Math.max(0, subtotal - activeDiscount);
-                    totalEl.innerHTML = `<span style="text-decoration:line-through; color:#aaa; font-size:0.9rem;">R$ ${subtotal.toFixed(2).replace('.', ',')}</span> <br> Total: <span style="color:var(--pink-main);">R$ ${finalTotal.toFixed(2).replace('.', ',')}</span>`;
+                    totalEl.innerHTML = '<span style="text-decoration:line-through; color:#aaa; font-size:0.9rem;">R$ ' + subtotal.toFixed(2).replace('.', ',') + '</span> <br> Total: <span style="color:var(--pink-main);">R$ ' + finalTotal.toFixed(2).replace('.', ',') + '</span>';
                 } else {
-                    totalEl.innerText = `Total: R$ ${subtotal.toFixed(2).replace('.', ',')}`;
-                }
-
-                payBtn.style.display = 'block';
-            }
-        }
-
-        function applyCoupon() {
-            const input = document.getElemen
+                    totalEl.inne
