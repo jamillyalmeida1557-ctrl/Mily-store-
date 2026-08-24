@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>꒰ 🛍️ ꒱ 𝐌𝐢𝐥𝐲 𝐒𝐭𝐨𝐫𝐞 𐙚</title>
+    <title>Mily Store</title>
     <style>
         :root {
             --pink-main: #ff69b4;
@@ -298,12 +298,12 @@
 <body>
 
     <header>
-        <div class="logo">꒰ 🛍️ ꒱ 𝐌𝐢𝐥𝐲 𝐒𝐭𝐨𝐫𝐞 𐙚</div>
+        <div class="logo">🛍️ Mily Store</div>
         <button class="cart-btn-top" onclick="openModal('cart-modal')">🛒 Carrinho (<span id="cart-count">0</span>)</button>
     </header>
 
     <div class="hero">
-        <h1>꒰ 🛍️ ꒱ 𝐌𝐢𝐥𝐲 𝐒𝐭𝐨𝐫𝐞 𐙚</h1>
+        <h1>🛍️ Mily Store</h1>
         <p>Sua loja de itens, moedas e serviços para o Bloxburg! Entregas rápidas e atendimento direto pelo Discord.</p>
         <a href="https://discord.gg/md2StDvbD" target="_blank" class="btn-discord">💬 Entrar no Servidor do Discord</a>
     </div>
@@ -330,7 +330,7 @@
     </div>
 
     <footer>
-        ꒰ 🛍️ ꒱ 𝐌𝐢𝐥𝐲 𝐒𝐭𝐨𝐫𝐞 𐙚 © 2026 - Todos os direitos reservados
+        Mily Store &copy; 2026 - Todos os direitos reservados
     </footer>
 
     <!-- Modals -->
@@ -390,7 +390,7 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('success-modal')">&times;</span>
             <h3 style="color: #2e8b57;">Pedido Concluído! 🎉</h3>
-            <p style="font-size: 0.9rem; color: #666; margin: 15px 0;">Obrigado por comprar na ꒰ 🛍️ ꒱ 𝐌𝐢𝐥𝐲 𝐒𝐭𝐨𝐫𝐞 𐙚! Entregaremos seu pedido em breve.</p>
+            <p style="font-size: 0.9rem; color: #666; margin: 15px 0;">Obrigado por comprar na Mily Store! Entregaremos seu pedido em breve.</p>
             <a href="https://discord.gg/md2StDvbD" target="_blank" class="btn-discord">Ir para o Discord</a>
         </div>
     </div>
@@ -453,14 +453,15 @@
         let activeDiscount = 0;
         let appliedCouponCode = "";
 
-        function renderProducts(filter = 'all') {
+        function renderProducts(filter) {
+            if(!filter) filter = 'all';
             const container = document.getElementById('products-container');
             if(!container) return;
             container.innerHTML = '';
 
-            const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+            const filtered = filter === 'all' ? products : products.filter(function(p) { return p.category === filter; });
 
-            filtered.forEach(p => {
+            filtered.forEach(function(p) {
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.innerHTML = `
@@ -473,17 +474,18 @@
         }
 
         function filterCategory(cat, btn) {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            const btns = document.querySelectorAll('.filter-btn');
+            btns.forEach(function(b) { b.classList.remove('active'); });
             if(btn) btn.classList.add('active');
             renderProducts(cat);
         }
 
         function addToCart(id) {
-            const item = products.find(p => p.id === id);
+            const item = products.find(function(p) { return p.id === id; });
             if(item) {
                 cart.push(item);
                 document.getElementById('cart-count').innerText = cart.length;
-                alert(`${item.name} adicionado ao carrinho!`);
+                alert(item.name + " adicionado ao carrinho!");
             }
         }
 
@@ -520,7 +522,7 @@
                 couponWrapper.style.display = 'none';
             } else {
                 let subtotal = 0;
-                cart.forEach((item, index) => {
+                cart.forEach(function(item, index) {
                     subtotal += item.price;
                     container.innerHTML += `<div style="display:flex; justify-content:space-between; align-items:center; margin:10px 0; font-size:0.9rem; background:#fff0f5; padding:8px 12px; border-radius:10px;">
                         <span>${item.name} - <b>R$ ${item.price.toFixed(2).replace('.', ',')}</b></span>
@@ -543,5 +545,4 @@
         }
 
         function applyCoupon() {
-            const input = document.getElementById('coupon-code');
-            cons
+            const input = document.getElemen
