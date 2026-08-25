@@ -25,7 +25,7 @@
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 2000; padding: 15px; }
         .modal-content { background: #fff; padding: 20px; border-radius: 15px; width: 100%; max-width: 400px; text-align: center; position: relative; max-height: 90vh; overflow-y: auto; }
         .close-btn { position: absolute; top: 10px; right: 15px; font-size: 1.5rem; cursor: pointer; color: #aaa; }
-        .pix-box { background: var(--pink-light); padding: 10px; border-radius: 8px; margin: 10px 0; font-size: 0.8rem; word-break: break-all; color: var(--pink-main); font-weight: bold; }
+        .pix-box { background: var(--pink-light); padding: 10px; border-radius: 8px; margin: 10px 0; font-size: 0.85rem; word-break: break-all; color: var(--pink-main); font-weight: bold; }
         .input-field { width: 100%; padding: 8px 12px; border: 1px solid #ddd; border-radius: 8px; margin: 5px 0 10px 0; font-size: 0.85rem; }
         .input-label { text-align: left; font-size: 0.75rem; color: #666; font-weight: bold; display: block; }
         .remove-btn { background: none; border: none; color: red; font-weight: bold; cursor: pointer; }
@@ -62,6 +62,7 @@
         <ol style="padding-left: 20px; color: #666; line-height: 1.6;">
             <li><b>Prazo de Entrega:</b> Os produtos chegam na sua conta em até <b>1 a 3 dias úteis</b> após a confirmação do pagamento.</li>
             <li><b>Pedidos de Farm:</b> Se você comprou Farm, entre no nosso servidor do Discord e <b>abra um Ticket</b> logo em seguida para agendarmos a entrega!</li>
+            <li><b>Aviso Anti-Golpes:</b> Para os "engraçadinhos" de plantão: nem tente burlar o sistema enviando pedidos sem fazer o PIX real! Todos os pagamentos são conferidos na conta e não entregamos nada sem o dinheiro cair. 🚫💸</li>
         </ol>
     </div>
 
@@ -86,7 +87,7 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('payment-modal')">&times;</span>
             <h3 style="color: var(--pink-main);">Pagamento PIX</h3>
-            <div class="pix-box">eb235430-9121-4fc3-99b6-737008edbb4a</div>
+            <div class="pix-box">jamillyalmeida1557@gmail.com</div>
             <button class="add-cart-btn" style="margin-bottom: 12px;" onclick="copyPix()">Copiar Chave PIX</button>
             <label class="input-label">Nome do Titular do PIX:</label>
             <input type="text" id="pix-name" class="input-field" placeholder="Ex: Maria Silva">
@@ -113,11 +114,11 @@
             <a href="https://discord.gg/md2StDvbD" target="_blank" class="btn-discord">Ir para o Discord</a>
         </div>
     </div>
-    2    <script>
+       <script>
         var DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1541376145369468948/N45R5rQcPsxddzdKc3dzVcaSJzd0fRCZlHCvWalTBGfypVngjKc5pTfpfpOF3amH9GkM";
 
         var products = [
-            // Bucks (+0,45 a cada nível)
+            // Bucks
             { id: 1, name: "10.000 Bucks", price: 0.45, category: "bucks" },
             { id: 2, name: "25.000 Bucks", price: 0.90, category: "bucks" },
             { id: 3, name: "30.000 Bucks", price: 1.35, category: "bucks" },
@@ -128,7 +129,7 @@
             { id: 8, name: "300.000 Bucks", price: 3.60, category: "bucks" },
             { id: 9, name: "500.000 Bucks", price: 4.05, category: "bucks" },
 
-            // Blockbux (Ajustados pelo valor de presente)
+            // Blockbux
             { id: 10, name: "50 Blockbux", price: 2.50, category: "blockbux" },
             { id: 11, name: "100 Blockbux", price: 4.50, category: "blockbux" },
             { id: 12, name: "200 Blockbux", price: 7.50, category: "blockbux" },
@@ -145,12 +146,16 @@
             { id: 21, name: "Premium", price: 16.50, category: "passes" },
             { id: 22, name: "Transform Plus", price: 23.50, category: "passes" },
 
-            // Farm
-            { id: 23, name: "Farm 100k", price: 7.00, category: "farm" },
-            { id: 24, name: "Farm 500k", price: 12.50, category: "farm" }
+            // Farm Reformulado
+            { id: 23, name: "Farm 100.000 Bucks", price: 7.00, category: "farm" },
+            { id: 24, name: "Farm 250.000 Bucks", price: 10.00, category: "farm" },
+            { id: 25, name: "Farm 500.000 Bucks", price: 12.50, category: "farm" },
+            { id: 26, name: "Farm 1.000.000 Bucks", price: 22.00, category: "farm" },
+            { id: 27, name: "Farm 2.000.000 Bucks", price: 40.00, category: "farm" },
+            { id: 28, name: "Farm 3.000.000 Bucks", price: 58.00, category: "farm" },
+            { id: 29, name: "Farm 5.000.000 Bucks", price: 90.00, category: "farm" }
         ];
 
-        // 10 Cupons de Desconto
         var coupons = {
             "MILY10": { type: "percent", value: 10 },
             "MILY15": { type: "percent", value: 15 },
@@ -271,7 +276,7 @@
         }
 
         function proceedToPayment() { closeModal('cart-modal'); openModal('payment-modal'); }
-        function copyPix() { navigator.clipboard.writeText('eb235430-9121-4fc3-99b6-737008edbb4a'); alert('Chave PIX copiada!'); }
+        function copyPix() { navigator.clipboard.writeText('jamillyalmeida1557@gmail.com'); alert('Chave PIX copiada!'); }
 
         function openNickModal() {
             if (!document.getElementById('pix-name').value || !document.getElementById('pix-bank').value) {
@@ -330,4 +335,3 @@
     </script>
 </body>
 </html>
-
