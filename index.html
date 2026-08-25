@@ -44,42 +44,12 @@
         .coupon-box input { flex: 1; padding: 6px 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 0.8rem; text-transform: uppercase; }
         .coupon-box button { background: var(--pink-main); color: #fff; border: none; padding: 6px 12px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 0.8rem; }
 
-        /* Notificação Suave (Toast) */
-        #toast-container {
-            position: fixed;
-            bottom: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 9999;
-            pointer-events: none;
-        }
-        .toast {
-            background-color: var(--pink-main);
-            color: #fff;
-            padding: 12px 22px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.3s ease;
-        }
-        .toast.toast-error {
-            background-color: #e74c3c;
-            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
-        }
-        .toast.toast-success {
-            background-color: #2ecc71;
-            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
-        }
-        .toast.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        /* Notificacao Suave */
+        #toast-container { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); z-index: 9999; pointer-events: none; }
+        .toast { background-color: var(--pink-main); color: #fff; padding: 12px 22px; border-radius: 25px; font-size: 0.9rem; font-weight: bold; box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4); display: flex; align-items: center; gap: 8px; opacity: 0; transform: translateY(20px); transition: all 0.3s ease; }
+        .toast.toast-error { background-color: #e74c3c; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4); }
+        .toast.toast-success { background-color: #2ecc71; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4); }
+        .toast.show { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
@@ -103,8 +73,7 @@
     </div>
 
     <div class="products-grid" id="products-container"></div>
-
-    <!-- CAIXA DE AVISOS -->
+        <!-- CAIXA DE AVISOS -->
     <div style="background: #fff; border: 2px solid var(--pink-soft); border-radius: 15px; padding: 20px; max-width: 870px; margin: 30px auto 20px auto; font-size: 0.9rem;">
         <h3 style="color: var(--pink-main); margin-bottom: 10px;">📦 Avisos Importantes:</h3>
         <ol style="padding-left: 20px; color: #666; line-height: 1.6;">
@@ -114,7 +83,7 @@
         </ol>
     </div>
 
-    <!-- MODAL CARRINHO -->
+    <!-- MODAIS -->
     <div class="modal" id="cart-modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('cart-modal')">&times;</span>
@@ -132,7 +101,6 @@
         </div>
     </div>
 
-    <!-- MODAL PAGAMENTO -->
     <div class="modal" id="payment-modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('payment-modal')">&times;</span>
@@ -147,7 +115,6 @@
         </div>
     </div>
 
-    <!-- MODAL ROBLOX NICK -->
     <div class="modal" id="nick-modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('nick-modal')">&times;</span>
@@ -158,7 +125,6 @@
         </div>
     </div>
 
-    <!-- MODAL SUCESSO -->
     <div class="modal" id="success-modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('success-modal')">&times;</span>
@@ -168,18 +134,11 @@
         </div>
     </div>
 
-    <!-- ELEMENTO DA NOTIFICAÇÃO SUAVE -->
-    <div id="toast-container">
-        <div id="toast" class="toast">
-            <span id="toast-msg">Mensagem aqui</span>
-        </div>
-    </div>
-
-    <script>
+    <div id="toast-container"><div id="toast" class="toast"><span id="toast-msg"></span></div></div>
+        <script>
         var DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1541376145369468948/N45R5rQcPsxddzdKc3dzVcaSJzd0fRCZlHCvWalTBGfypVngjKc5pTfpfpOF3amH9GkM";
 
         var products = [
-            // Bucks
             { id: 1, name: "10.000 Bucks", price: 0.45, category: "bucks" },
             { id: 2, name: "25.000 Bucks", price: 0.90, category: "bucks" },
             { id: 3, name: "30.000 Bucks", price: 1.35, category: "bucks" },
@@ -190,7 +149,6 @@
             { id: 8, name: "300.000 Bucks", price: 3.60, category: "bucks" },
             { id: 9, name: "500.000 Bucks", price: 4.05, category: "bucks" },
 
-            // Blockbux
             { id: 10, name: "50 Blockbux", price: 2.50, category: "blockbux" },
             { id: 11, name: "100 Blockbux", price: 4.50, category: "blockbux" },
             { id: 12, name: "200 Blockbux", price: 7.50, category: "blockbux" },
@@ -199,7 +157,6 @@
             { id: 15, name: "1.000 Blockbux", price: 22.00, category: "blockbux" },
             { id: 16, name: "2.000 Blockbux", price: 32.00, category: "blockbux" },
 
-            // Passes
             { id: 17, name: "Basements", price: 4.50, category: "passes" },
             { id: 18, name: "Marvelous Mood", price: 7.50, category: "passes" },
             { id: 19, name: "Advanced placing", price: 9.50, category: "passes" },
@@ -207,7 +164,6 @@
             { id: 21, name: "Premium", price: 16.50, category: "passes" },
             { id: 22, name: "Transform Plus", price: 23.50, category: "passes" },
 
-            // Farm
             { id: 23, name: "Farm 100.000 Bucks", price: 7.00, category: "farm" },
             { id: 24, name: "Farm 250.000 Bucks", price: 10.00, category: "farm" },
             { id: 25, name: "Farm 500.000 Bucks", price: 12.50, category: "farm" },
@@ -234,21 +190,15 @@
         var activeCoupon = null;
         var toastTimer = null;
 
-        // Função de Notificação Bonita
         function showToast(message, type) {
             var toast = document.getElementById('toast');
             var toastMsg = document.getElementById('toast-msg');
-            
             toastMsg.innerText = message;
             toast.className = 'toast show';
-            
             if (type === 'error') toast.classList.add('toast-error');
             else if (type === 'success') toast.classList.add('toast-success');
-            
             clearTimeout(toastTimer);
-            toastTimer = setTimeout(function() {
-                toast.className = 'toast';
-            }, 2500);
+            toastTimer = setTimeout(function() { toast.className = 'toast'; }, 2500);
         }
 
         function renderProducts(cat) {
@@ -314,7 +264,6 @@
             var subtotal = 0;
             for (var i = 0; i < cart.length; i++) subtotal += cart[i].price;
             var total = subtotal;
-
             if (activeCoupon) {
                 if (activeCoupon.type === "percent") {
                     total -= (subtotal * activeCoupon.value) / 100;
@@ -367,4 +316,64 @@
 
         function openNickModal() {
             var name = document.getElementById('pix-name').value.trim();
-    
+            var bank = document.getElementById('pix-bank').value.trim();
+
+            if (!name || !bank) {
+                showToast("Preencha o Nome e o Banco do PIX!", "error");
+                return;
+            }
+            closeModal('payment-modal');
+            document.getElementById('nick-modal').style.display = 'flex';
+        }
+
+        function finishOrder() {
+            var nick = document.getElementById('roblox-nick').value.trim();
+            if (!nick) {
+                showToast("Por favor, digite seu Nick do Roblox!", "error");
+                return;
+            }
+
+            var btn = document.getElementById('confirm-order-btn');
+            btn.disabled = true;
+
+            var itemsText = "";
+            for (var i = 0; i < cart.length; i++) {
+                itemsText += "• " + cart[i].name + "\n";
+            }
+            var totalFinal = calculateTotal();
+
+            var payload = {
+                username: "Mily Store",
+                embeds: [{
+                    title: "🛍️ NOVO PEDIDO!",
+                    color: 16738740,
+                    fields: [
+                        { name: "Nick Roblox", value: nick, inline: true },
+                        { name: "Banco", value: document.getElementById('pix-bank').value, inline: true },
+                        { name: "Titular PIX", value: document.getElementById('pix-name').value, inline: false },
+                        { name: "Itens", value: itemsText, inline: false },
+                        { name: "Cupom", value: activeCoupon ? activeCoupon.code : "Nenhum", inline: true },
+                        { name: "Total com Desconto", value: "R$ " + totalFinal.toFixed(2).replace('.', ','), inline: true }
+                    ]
+                }]
+            };
+
+            fetch(DISCORD_WEBHOOK_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            }).then(function() {
+                cart = [];
+                activeCoupon = null;
+                document.getElementById('cart-count').innerText = 0;
+                closeModal('nick-modal');
+                openModal('success-modal');
+            }).catch(function() {
+                showToast("Erro ao enviar pedido. Tente novamente.", "error");
+            }).finally(function() { btn.disabled = false; });
+        }
+
+        window.onload = function() { renderProducts('all'); };
+    </script>
+</body>
+</html>
